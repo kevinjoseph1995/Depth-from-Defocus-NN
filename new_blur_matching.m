@@ -1,0 +1,11 @@
+clc;
+clear;
+close all;
+test_image=imread('blurred_image_sigma_6.jpg');
+figure;
+imshow(test_image);
+INITPSF=ones(31,31);
+[J,PSF] = deconvblind(test_image, INITPSF,1);
+sig=sigma(PSF);
+disp(sig);
+surf(PSF);
